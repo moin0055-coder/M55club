@@ -1,0 +1,58 @@
+<div style="margin-top:20px; color:#00ff00; font-family:monospace;">
+
+  <h3>💰 Bitcoin Payment Gateway</h3>
+
+  <p>Send exactly <b>$18 (BTC)</b> to unlock access</p>
+
+  <!-- Dummy BTC Address -->
+  <input id="btcAddr" type="text"
+  value="17J2pw8SRorc4yXa5hJX7QqrE63k7YXNUQ"
+  readonly style="width:340px; background:black; color:#00ff00; border:1px solid lime; padding:8px;">
+
+  <br><br>
+
+  <button onclick="copyBTC()">📋 Copy Address</button>
+  <button onclick="startPayment()">Confirm Payment</button>
+
+  <p id="status" style="margin-top:15px;"></p>
+
+</div>
+
+<script>
+function copyBTC(){
+  let copyText = document.getElementById("btcAddr");
+  copyText.select();
+  document.execCommand("copy");
+  alert("BTC Address Copied!");
+}
+
+function startPayment(){
+  let status = document.getElementById("status");
+
+  status.innerHTML = "⏳ Waiting for blockchain detection...";
+
+  setTimeout(()=>{
+    status.innerHTML = "🔗 Transaction detected (0/3 confirmations)";
+  },2000);
+
+  setTimeout(()=>{
+    status.innerHTML = "🔗 Confirming... (1/3)";
+  },4000);
+
+  setTimeout(()=>{
+    status.innerHTML = "🔗 Confirming... (2/3)";
+  },6000);
+
+  setTimeout(()=>{
+    status.innerHTML = "⚠️ Network error...";
+  },8000);
+
+  setTimeout(()=>{
+    status.innerHTML = "❌ Transaction Failed!";
+  },10000);
+
+  setTimeout(()=>{
+    status.innerHTML = "TRY AGAIN LATER";
+  },12000);
+}
+</script>

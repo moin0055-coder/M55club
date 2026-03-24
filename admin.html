@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Admin Panel</title>
+<style>
+body {background:black;color:white;text-align:center;}
+input {margin:5px;padding:10px;}
+button {padding:10px;background:green;color:white;border:none;}
+</style>
+</head>
+
+<body>
+
+<h1>Admin Panel</h1>
+
+<input id="name" placeholder="Product Name"><br>
+<input id="price" placeholder="Price"><br>
+<input id="size" placeholder="Size"><br>
+<input id="img" placeholder="Image URL"><br>
+
+<button onclick="addProduct()">Add Product</button>
+
+<script src="products.js"></script>
+
+<script>
+function addProduct() {
+  let newProduct = {
+    name: document.getElementById("name").value,
+    price: document.getElementById("price").value,
+    size: document.getElementById("size").value,
+    img: document.getElementById("img").value
+  };
+
+  products.push(newProduct);
+
+  alert("Product Added (Note: file manually update karna padega)");
+}
+</script>
+
+</body>
+</html>

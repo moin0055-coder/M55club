@@ -1,0 +1,29 @@
+0 verbose cli /data/data/com.termux/files/usr/bin/node /data/data/com.termux/files/usr/bin/npm
+1 info using npm@11.12.0
+2 info using node@v24.14.0
+3 silly config load:file:/data/data/com.termux/files/usr/lib/node_modules/npm/npmrc
+4 silly config load:file:/data/data/com.termux/files/home/color-app/.npmrc
+5 silly config load:file:/data/data/com.termux/files/home/.npmrc
+6 silly config load:file:/data/data/com.termux/files/usr/etc/npmrc
+7 verbose title npm config set python python
+8 verbose argv "config" "set" "python" "python"
+9 verbose logfile logs-max:10 dir:/data/data/com.termux/files/home/.npm/_logs/2026-03-23T20_02_56_289Z-
+10 verbose logfile /data/data/com.termux/files/home/.npm/_logs/2026-03-23T20_02_56_289Z-debug-0.log
+11 silly logfile done cleaning log files
+12 info config set "python" "python"
+13 verbose stack Error: `python` is not a valid npm option
+13 verbose stack     at Config.set (/data/data/com.termux/files/usr/lib/node_modules/npm/lib/commands/config.js:170:15)
+13 verbose stack     at Config.exec (/data/data/com.termux/files/usr/lib/node_modules/npm/lib/commands/config.js:135:20)
+13 verbose stack     at /data/data/com.termux/files/usr/lib/node_modules/npm/lib/npm.js:308:81
+13 verbose stack     at Object.start (/data/data/com.termux/files/usr/lib/node_modules/npm/node_modules/proc-log/lib/index.js:101:21)
+13 verbose stack     at Npm.execCommandClass (/data/data/com.termux/files/usr/lib/node_modules/npm/lib/npm.js:307:19)
+13 verbose stack     at async Npm.exec (/data/data/com.termux/files/usr/lib/node_modules/npm/lib/npm.js:193:9)
+13 verbose stack     at async module.exports (/data/data/com.termux/files/usr/lib/node_modules/npm/lib/cli/entry.js:67:5)
+14 error `python` is not a valid npm option
+15 verbose cwd /data/data/com.termux/files/home/color-app
+16 verbose os Linux 5.15.178-android13-8-31998796-abF731BXXU5FYI9
+17 verbose node v24.14.0
+18 verbose npm  v11.12.0
+19 verbose exit 1
+20 verbose code 1
+21 error A complete log of this run can be found in: /data/data/com.termux/files/home/.npm/_logs/2026-03-23T20_02_56_289Z-debug-0.log
