@@ -1,0 +1,38 @@
+0 verbose cli /data/data/com.termux/files/usr/bin/node /data/data/com.termux/files/usr/bin/npm
+1 info using npm@11.12.0
+2 info using node@v25.8.1
+3 silly config load:file:/data/data/com.termux/files/usr/lib/node_modules/npm/npmrc
+4 silly config load:file:/data/data/com.termux/files/home/.npmrc
+5 silly config load:file:/data/data/com.termux/files/usr/etc/npmrc
+6 verbose title npm init
+7 verbose argv "init" "--yes"
+8 verbose logfile logs-max:10 dir:/data/data/com.termux/files/home/.npm/_logs/2026-03-25T17_51_35_185Z-
+9 verbose logfile /data/data/com.termux/files/home/.npm/_logs/2026-03-25T17_51_35_185Z-debug-0.log
+10 silly logfile done cleaning log files
+11 silly package data {
+11 silly package data   name: 'm55club',
+11 silly package data   version: '1.0.0',
+11 silly package data   main: 'server.js',
+11 silly package data   scripts: { start: 'node server.js' },
+11 silly package data   dependencies: { express: '^4.18.2', mongoose: '^7.0.0', cors: '^2.8.5' },
+11 silly package data   description: '',
+11 silly package data   devDependencies: {},
+11 silly package data   repository: {
+11 silly package data     type: 'git',
+11 silly package data     url: 'git+https://github.com/moin0055-coder/m55club.git'
+11 silly package data   },
+11 silly package data   keywords: [],
+11 silly package data   author: '',
+11 silly package data   license: 'ISC',
+11 silly package data   type: 'commonjs',
+11 silly package data   bugs: { url: 'https://github.com/moin0055-coder/m55club/issues' },
+11 silly package data   homepage: 'https://github.com/moin0055-coder/m55club#readme',
+11 silly package data   Symbol(newline): '\n',
+11 silly package data   Symbol(indent): '  '
+11 silly package data }
+12 verbose cwd /data/data/com.termux/files/home
+13 verbose os Linux 5.15.178-android13-8-31998796-abF731BXXU5FYI9
+14 verbose node v25.8.1
+15 verbose npm  v11.12.0
+16 verbose exit 0
+17 info ok

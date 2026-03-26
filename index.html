@@ -1,116 +1,105 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Fashion Store</title>
-
-<style>
-body {
-  background:#111;
-  color:white;
-  font-family:Arial;
-  text-align:center;
-}
-
-h1 {
-  color:#ff4d4d;
-}
-
-.card {
-  background:#1c1c1c;
-  margin:20px;
-  padding:15px;
-  border-radius:10px;
-}
-
-img {
-  width:200px;
-  border-radius:10px;
-}
-
-button {
-  background:#ff4d4d;
-  border:none;
-  padding:10px;
-  margin-top:10px;
-  cursor:pointer;
-}
-
-#paymentBox, #successBox {
-  display:none;
-  margin-top:20px;
-}
-</style>
-
+  <title>M55Club</title>
+  <style>
+    body { background:#0f0f0f; color:#fff; text-align:center; font-family:sans-serif;}
+    input,button { padding:10px; margin:5px; border:none; border-radius:8px;}
+    button { background:gold; color:black; font-weight:bold;}
+    .box { margin-top:20px;}
+  </style>
 </head>
-
 <body>
 
-<h1>🔥 My Fashion Store 🔥</h1>
+<h1>🔥 M55Club</h1>
 
-<div id="products"></div>
-
-<!-- PAYMENT -->
-<div id="paymentBox">
-  <h2>💰 Payment</h2>
-  <p>Send Bitcoin to:</p>
-  <p><b id="btc"></b></p>
-  <button onclick="paid()">I Have Paid</button>
+<div class="box">
+  <input id="user" placeholder="username">
+  <input id="pass" placeholder="password">
+  <button onclick="register()">Register</button>
+  <button onclick="login()">Login</button>
 </div>
 
-<!-- SUCCESS -->
-<div id="successBox">
-  <h2>✅ Order Confirmed</h2>
-  <p>Contact on Telegram: @MoinXbot</p>
+<div class="box">
+  <h3>Coins: <span id="coins">0</span></h3>
 </div>
+
+<div class="box">
+  <h3>⏱ Timer: <span id="timer">20</span></h3>
+  <h3>🎯 Current Number: <span id="round">-</span></h3>
+</div>
+
+<div class="box">
+  <input id="num" placeholder="0-9">
+  <button onclick="play()">Play</button>
+</div>
+
+<p id="out"></p>
 
 <script>
+let token="";
+let t=20;
 
-// 👉 PRODUCTS (edit yahan se)
-const products = [
-  {
-    name: "Black T-Shirt",
-    price: "$10",
-    size: "M, L, XL",
-    img: "https://www.darveys.com/product/black-leather-shirt-2892472?currency=INR&country=IN&size_option_id=2327&gad_source=4&gad_campaignid=22605468211&gbraid=0AAAAADkG25Lb8sBYLmrf3qVM6TUcVXbTk&gclid=Cj0KCQjwve7NBhC-ARIsALZy9HXRIYkvTX8a3NaKXfJDPTkV9SXhU_JWKPiY2n7DXDVQxqNPWORLU4kaAka5EALw_wcB"
+// register
+function register(){
+ fetch("/api/auth/register",{
+  method:"POST",
+  headers:{"Content-Type":"application/json"},
+  body:JSON.stringify({username:user.value,password:pass.value})
+ }).then(r=>r.json()).then(d=>alert(d.msg));
+}
+
+// login
+function login(){
+ fetch("/api/auth/login",{
+  method:"POST",
+  headers:{"Content-Type":"application/json"},
+  body:JSON.stringify({username:user.value,password:pass.value})
+ }).then(r=>r.json()).then(d=>{
+  token=d.token;
+  alert("Login success");
+  balance();
+ });
+}
+
+// balance
+function balance(){
+ fetch("/api/wallet/balance",{headers:{"auth-token":token}})
+ .then(r=>r.json()).then(d=>{
+  coins.innerText=d.coins;
+ });
+}
+
+// play
+function play(){
+ fetch("/api/game/play",{
+  method:"POST",
+  headers:{
+   "Content-Type":"application/json",
+   "auth-token":token
   },
-  {
-    name: "Hoodie",
-    price: "$20",
-    size: "L, XL",
-    img: "https://www.darveys.com/product/dove-grey-leather-shirt?currency=INR&country=IN&size_option_id=192&gad_source=4&gad_campaignid=22605468211&gbraid=0AAAAADkG25Lb8sBYLmrf3qVM6TUcVXbTk&gclid=Cj0KCQjwve7NBhC-ARIsALZy9HUBw5qHZw696cFTq0Ej5eX_aM23U3Tl_PXuJaJamX6Q6f8to-krQScaAiAwEALw_wcB"
-  }
-];
-
-// 👉 Bitcoin address
-const btcAddress = "17J2pw8SRorc4yXa5hJX7QqrE63k7YXNUQ";
-
-// 👉 Show products
-const container = document.getElementById("products");
-
-products.forEach(p => {
-  container.innerHTML += `
-    <div class="card">
-      <img src="${p.img}">
-      <h2>${p.name}</h2>
-      <p>Price: ${p.price}</p>
-      <p>Size: ${p.size}</p>
-      <button onclick="buy()">Buy Now</button>
-    </div>
-  `;
-});
-
-// 👉 Buy function
-function buy() {
-  document.getElementById("paymentBox").style.display = "block";
-  document.getElementById("btc").innerText = btcAddress;
+  body:JSON.stringify({number:num.value})
+ })
+ .then(r=>r.json())
+ .then(d=>{
+  out.innerText="Result: "+d.result+" | "+d.currentNumber;
+  balance();
+ });
 }
 
-// 👉 Payment confirm
-function paid() {
-  document.getElementById("paymentBox").style.display = "none";
-  document.getElementById("successBox").style.display = "block";
-}
+// timer
+setInterval(()=>{
+ t--;
+ if(t<=0) t=20;
+ timer.innerText=t;
+},1000);
 
+// round update
+setInterval(()=>{
+ fetch("/api/game/round")
+ .then(r=>r.json())
+ .then(d=>round.innerText=d.currentNumber);
+},2000);
 </script>
 
 </body>

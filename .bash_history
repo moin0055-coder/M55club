@@ -143,3 +143,64 @@ nano public/index.html
 git add .
 git commit -m "live UI added"
 git push
+nano server.js
+nano package.json
+git add .
+git commit -m "backend added"
+git push
+pwd
+git init
+git remote add origin https://github.com/moin0055-coder/m55club.git
+git add .
+git commit -m "first commit"
+git branch -M main
+git push -u origin main
+git branch -M main
+git push -u origin main
+git config --global user.email "your@gmail.com"
+git config --global user.name "moin"
+ls
+cd color-app
+git branch -M main
+git push -u origin main
+git pull origin main --allow-unrelated-histories
+git push origin main
+cd ..
+ls
+git init
+git remote add origin https://github.com/moin0055-coder/M55club.git
+git add .
+git commit -m "final backend"
+git branch -M main
+git push -f origin main
+nano server.js
+pkg update
+pkg upgrade
+pkg install nodejs
+pkg install git
+cd /storage/emulated/0/Download/tera-folder
+termux-setup-storage
+ls /storage/emulated/0/Download
+cd /storage/emulated/0/Download/myproject
+pkg install unzip
+unzip snapd-master.zip
+snapd-master
+cd snapd-master
+pkg update && pkg upgrade
+pkg install nodejs
+node -v
+npm -v
+cd /storage/emulated/0/your-folder
+cd ~
+ls
+npm install
+node server.js
+mongoose.connect("mongodb+srv://Moin0055:Moin0055@cluster0.alkonfr.mongodb.net/m55club")
+nano server.js
+node server.js
+nano server.js
+npm init -y
+npm install express mongoose cors
+node server.js
+nano server.js
+node server.js
